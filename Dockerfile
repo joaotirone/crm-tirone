@@ -1,22 +1,18 @@
 FROM php:8.1-fpm
 
-
-# Definir o usuário root temporariamente
-USER root
-
-# Instalar o pacote python3.9-minimal
-RUN apt-get update && \
-    apt-get install -y python3.9-minimal
-
-# Voltar para o usuário padrão
-USER www
-
 RUN apt-get update && \
     apt-get install -y \
         nginx \
         supervisor \
         && \
     rm -rf /var/lib/apt/lists/*
+
+
+RUN dpkg --configure -a   # Adicionado para reconfigurar pacotes pendentes
+RUN apt-get install -f    # Adicionado para corrigir problemas de dependência
+
+RUN apt-get install -y python3.9-minimal
+
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 COPY default.conf /etc/nginx/conf.d/default.conf
 
