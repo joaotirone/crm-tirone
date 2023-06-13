@@ -7,7 +7,7 @@ services:
       - ./:/var/www/
       - /home/app/crm-tirone:/var/www/html
       - /home/app/crm-tirone/storage:/var/www/html/storage
-      - /home/app/crm-tirone/public/build:/var/www/siriusalpha.com.br/public/build
+      - /home/app/crm-tirone/public:/var/www/crm-tirone/public
     ports:
       - "82:80"
     networks:
