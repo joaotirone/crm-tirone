@@ -1,17 +1,12 @@
 FROM php:8.1-fpm
 
 RUN apt-get update && \
-    apt-get install -y \
+    apt-get install -y --no-install-recommends \
         nginx \
         supervisor \
+        python3.9-minimal \
         && \
     rm -rf /var/lib/apt/lists/*
-
-
-RUN dpkg --configure -a   # Adicionado para reconfigurar pacotes pendentes
-RUN apt-get install -f    # Adicionado para corrigir problemas de dependência
-
-RUN apt-get install -y python3.9-minimal
 
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 COPY default.conf /etc/nginx/conf.d/default.conf
@@ -24,8 +19,6 @@ RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 COPY --chown=www:www . /var/www
 USER www
-
-
 
 WORKDIR /var/www/
 
