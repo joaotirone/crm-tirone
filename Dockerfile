@@ -22,6 +22,6 @@ USER www
 
 WORKDIR /var/www/
 
-EXPOSE 82
+EXPOSE 81
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
