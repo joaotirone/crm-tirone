@@ -1,5 +1,16 @@
 FROM php:8.1-fpm
 
+
+# Definir o usuário root temporariamente
+USER root
+
+# Instalar o pacote python3.9-minimal
+RUN apt-get update && \
+    apt-get install -y python3.9-minimal
+
+# Voltar para o usuário padrão
+USER www
+
 RUN apt-get update && \
     apt-get install -y \
         nginx \
