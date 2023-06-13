@@ -11,7 +11,7 @@ RUN ls -al /var/www/storage
 RUN chmod -R 777 /var/www/storage/logs
 RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
-COPY --chown=www:www . /var/www
+COPY --chown=www:www . /home/app/crm-tirone
 USER www
 
 WORKDIR /var/www/
