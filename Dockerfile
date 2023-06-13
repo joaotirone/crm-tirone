@@ -1,10 +1,8 @@
 FROM php:8.1-fpm
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        nginx \
-        supervisor \
-        python3.9-minimal \
+RUN apt-get update && apt-get install -y \
+    nginx \
+    supervisor \
         && \
     rm -rf /var/lib/apt/lists/*
 
