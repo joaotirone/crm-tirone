@@ -47,6 +47,7 @@
                </a>
             </li>
           </ul>
+          @if(auth()->user()->can('vendas'))
           <ul class="menu-links">
               <li class="nav-link">
                   <a class="" href="#"  data-toggle="dropdown">
@@ -59,6 +60,8 @@
                   </ul>
               </li>
           </ul>
+          @endif 
+          @if(auth()->user()->can('pos-vendas')) 
           <ul class="menu-links">
             <li class="nav-link">
                <a href="#">
@@ -67,6 +70,8 @@
                </a>
             </li>
           </ul>
+          @endif 
+          @if(auth()->user()->can('config_administrativa')) 
           <ul class="menu-links">
               <li class="nav-link">
                   <a class="" href="#"  data-toggle="dropdown">
@@ -78,11 +83,13 @@
                       <li><a class="dropdown-item" href="{{route('fixo.index')}}">Fixo</a></li>
                       <li><a class="dropdown-item" href="{{route('cell.index')}}">Plano Movel</a></li>
                       <li><a class="dropdown-item" href="{{route('tv.index')}}">Grade de canais</a></li>
+                      @if(auth()->user()->can('config_adm_user')) 
                       <li><a class="dropdown-item" href="{{route('user.index')}}">Usuarios</a></li>
+                      @endif 
                   </ul>
               </li>
           </ul>
-              
+          @endif  
         </div>
         <div class="bottom-content">
             <li class="">

@@ -38,17 +38,22 @@
     <form action="{{ route('input.search') }}" method="post"  class="card-text p-4">
       @csrf
       <!-- Form_Search_Filter -->
+      @if(auth()->user()->can('search_user'))
       <div class="row vaing-wrapper">
         <div class="input-field col s1">
           <input type="text" name="user_name_id" class="form-control" placeholder="user_name" value="{{$user_name_id}}">
         </div>
-        <br>
           <br>
           <br>
+          <br>
+          @endif
+          @if(auth()->user()->can('search_sup'))
         <div class="input-field col s2">
           <input type="text" name="supervisor_id" class="form-control" placeholder="supervisor_id:" value="{{$supervisor_id}}">
         </div>
+        
       </div>
+      @endif
       <div class="row vaing-wrapper">
         <br>
         <div class="input-field col S1">
@@ -98,10 +103,12 @@
     <input type="text" name="END" value="{{$END}}"> 
     </div>      
     <div class="ms-auto">           
-    <div class="ms-2">                   
+    <div class="ms-2"> 
+    @if(auth()->user()->can('relatorios'))                  
     <button class="btn rbt-green" >
     <i class='bx bx-upload icon'></i>
         Relatorio</button>
+    @endif
         </div>
         </div> 
     </form> 
@@ -137,7 +144,6 @@
             <td> {{$v->data_nascimento}} </td>
             <td> {{$v->virtua}} </td>
             <td> {{$v->user_name_id}} </td>
-            @if(auth()->user()->can('show_role'))
             <td>
                 <a href="{{ URL('/input/edit/'.$v->id) }}">
                     <button class="btn rbt btn-sm"><i class="fa fa-eye"></i>
@@ -145,7 +151,6 @@
                     </button>
                 </a>
             </td>
-            @endif
         </tr>
         @endforeach
     </tbody>
