@@ -28,50 +28,50 @@ class InputController extends Controller
         $vendedor_user = DB::table('users')->wherein('role_id', [ 1, 2  ])->get();
 
         if($user['role_id'] == 1){
-            $vend = DB::table('vendas')->where('user_name_id', $user['user_name'])->get();
+            $vend = DB::table('vendas')->where('user_name_id', $user['user_name'])->orderBy('created_at')->get();
             return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
         };
         if($user['role_id'] == 2){
-            $vend = DB::table('vendas')->where('user_name_id', $user['user_name'])->get();
+            $vend = DB::table('vendas')->where('user_name_id', $user['user_name'])->orderBy('created_at')->get();
             return view('home',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
         };
         if($user['role_id'] == 3){
-            $vend = DB::table('vendas')->where('supervisor_id', $user['id'])->get();
+            $vend = DB::table('vendas')->where('supervisor_id', $user['id'])->orderBy('created_at')->get();
             return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
         };
         if($user['role_id'] == 4){
-            $vend = DB::table('vendas')->get();
+            $vend = DB::table('vendas')->orderBy('created_at')->get();
             return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
         };
         
         if($user['role_id'] == 5){
-            $vend = DB::table('vendas')->get();
+            $vend = DB::table('vendas')->orderBy('created_at')->get();
 
             return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
         };
         if($user['role_id'] == 6){
-            $vend = DB::table('vendas')->get();
+            $vend = DB::table('vendas')->orderBy('created_at')->get();
 
            
             return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
         };
         if($user['role_id'] == 7){
-            $vend = DB::table('vendas')->get();
+            $vend = DB::table('vendas')->orderBy('created_at')->get();
 
             return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
         };
         if($user['role_id'] == 8){
-            $vend = DB::table('vendas')->get();
+            $vend = DB::table('vendas')->orderBy('created_at')->get();
 
             return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
         };
         if($user['role_id'] == 9){
-            $vend = DB::table('vendas')->get();
+            $vend = DB::table('vendas')->orderBy('created_at')->get();
 
             return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
         };
         if($user['role_id'] == 10){
-            $vend = DB::table('vendas')->get();
+            $vend = DB::table('vendas')->orderBy('created_at')->get();
 
             return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
         };
