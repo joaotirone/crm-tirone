@@ -95,7 +95,8 @@ class InputController extends Controller
 
         $user = Auth::user();
 
-
+        $supervisor_user = DB::table('users')->wherein('role_id', [ 3, 4  ])->get();
+        $vendedor_user = DB::table('users')->wherein('role_id', [ 1, 2  ])->get();
         if($user['role_id'] == 1){
             $vend = DB::table('vendas')->where('user_name_id', $user['user_name'])->get();
 
@@ -108,7 +109,7 @@ class InputController extends Controller
             if( $request->num_contrato){
                 $vend = $vend->where('num_contrato', "$request->num_contrato");
             }
-            return view('INPUT.input',compact('vend','num_contrato','nome','cpf','END','START'));
+            return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','END','START'));
         };
         if($user['role_id'] == 2){
             $vend = DB::table('vendas')->where('user_name_id', $user['user_name'])->get();
@@ -122,7 +123,7 @@ class InputController extends Controller
             if( $request->num_contrato){
                 $vend = $vend->where('num_contrato', "$request->num_contrato");
             }
-            return view('home',compact('vend','num_contrato','nome','cpf','END','START'));
+            return view('home',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','END','START'));
         };
         if($user['role_id'] == 3){
             $vend = DB::table('vendas')->where('supervisor_id', $user['id'])->get();
@@ -139,7 +140,7 @@ class InputController extends Controller
             if( $request->num_contrato){
                 $vend = $vend->where('num_contrato', "$request->num_contrato");
             }
-            return view('INPUT.input',compact('vend','num_contrato','nome','cpf','user_name_id','END','START'));
+            return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','END','START'));
         };
         if($user['role_id'] == 4){
             $vend = DB::table('vendas')->get();
@@ -159,7 +160,7 @@ class InputController extends Controller
             if( $request->num_contrato){
                 $vend = $vend->where('num_contrato', "$request->num_contrato");
             }
-            return view('INPUT.input',compact('vend','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
+            return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
         };
         
         if($user['role_id'] == 5){
@@ -180,7 +181,7 @@ class InputController extends Controller
             if( $request->num_contrato){
                 $vend = $vend->where('num_contrato', "$request->num_contrato");
             }
-            return view('INPUT.input',compact('vend','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
+            return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
         };
         if($user['role_id'] == 6){
             $vend = DB::table('vendas')->get();
@@ -200,7 +201,7 @@ class InputController extends Controller
             if( $request->num_contrato){
                 $vend = $vend->where('num_contrato', "$request->num_contrato");
             }
-            return view('INPUT.input',compact('vend','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
+            return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
         };
         if($user['role_id'] == 7){
             $vend = DB::table('vendas')->get();
@@ -220,7 +221,7 @@ class InputController extends Controller
             if( $request->num_contrato){
                 $vend = $vend->where('num_contrato', "$request->num_contrato");
             }
-            return view('INPUT.input',compact('vend','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
+            return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
         };
         if($user['role_id'] == 8){
             $vend = DB::table('vendas')->get();
@@ -240,7 +241,7 @@ class InputController extends Controller
             if( $request->num_contrato){
                 $vend = $vend->where('num_contrato', "$request->num_contrato");
             }
-            return view('INPUT.input',compact('vend','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
+            return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
         };
         if($user['role_id'] == 9){
             $vend = DB::table('vendas')->get();
@@ -260,7 +261,7 @@ class InputController extends Controller
             if( $request->num_contrato){
                 $vend = $vend->where('num_contrato', "$request->num_contrato");
             }
-            return view('INPUT.input',compact('vend','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
+            return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
         };
         if($user['role_id'] == 10){
             $vend = DB::table('vendas')->get();
@@ -280,10 +281,10 @@ class InputController extends Controller
             if( $request->num_contrato){
                 $vend = $vend->where('num_contrato', "$request->num_contrato");
             }
-            return view('INPUT.input',compact('vend','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
+            return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
         };
 
-        return view('INPUT.input',compact('vend','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
+        return view('INPUT.input',compact('vend','supervisor_user','vendedor_user','num_contrato','nome','cpf','user_name_id','supervisor_id','END','START'));
     }
 
     public function create(Request $request)
