@@ -53,34 +53,9 @@ class InputsExport implements FromQuery, WithHeadings
            $filters->where('cpf','LIKE', "%" . $this->filters['cpf']. "%");
         }
 
-        // if (!empty($this->filters['num_contrato'])) {
-        //     $filters->where('num_contrato','LIKE', "%" . $this->filters['num_contrato']. "%");
-        // }
-
-        // if (!empty($this->filters['ENDERECO'])) {
-        //     $filters->where('ENDERECO','LIKE', "%" . $this->filters['ENDERECO']. "%");
-        // }
-
-        // if (!empty($this->filters['COMPLEMENTO'])) {
-        //     $filters->where('COMPLEMENTO','LIKE', "%" . $this->filters['COMPLEMENTO']. "%");
-        // }
-
-        // if (!empty($this->filters['PF_PJ'])) {
-        //     $filters->where('NATUREZA_PESSOA', $this->filters['PF_PJ']);
-        // }
-
-        // if (!empty($this->filters['NU_1']) && !empty($this->filters['NU_2'])) {
-        //     $filters->where(DB::raw("(CASE WHEN NUMERO IN ( 'S/N','SN' ) THEN NULL ELSE CAST(NUMERO AS INT) END)"), ">=", [$this->filters['NU_1']]);
-        //     $filters->where(DB::raw("(CASE WHEN NUMERO IN ( 'S/N', 'SN' ) THEN NULL ELSE CAST(NUMERO AS INT) END)"), "<=",[$this->filters['NU_2']]);
-        // }
-
-        // if ($this->filters){
-        //     $filters->whereNull('BLACK_LIST');
-        // }
-
-        // if (!empty($this->filters['CEP'])) {
-        //     $filters->where('CEP', 'LIKE', "%" . $this->filters['CEP'] . "%");
-        // }
+        if (!empty($this->filters['num_contrato'])) {
+            $filters->where('num_contrato','LIKE', "%" . $this->filters['num_contrato']. "%");
+        }
 
         // dd($filters);
     return $filters;

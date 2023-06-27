@@ -41,7 +41,11 @@
       @if(auth()->user()->can('search_user'))
       <div class="row vaing-wrapper">
         <div class="input-field col s1">
-          <input type="text" name="user_name_id" class="form-control" placeholder="user_name" value="{{$user_name_id}}">
+        <select name="user_name_id" class="form-control">
+          @foreach($vendedor_user as $ved)
+            <option value="{{$ved->user_name}}">{{$ved->user_name}}</option>
+          @endforeach
+          </select>
         </div>
           <br>
           <br>
@@ -49,7 +53,11 @@
           @endif
           @if(auth()->user()->can('search_sup'))
         <div class="input-field col s2">
-          <input type="text" name="supervisor_id" class="form-control" placeholder="supervisor_id:" value="{{$supervisor_id}}">
+          <select name="supervisor_id" class="form-control">
+          @foreach($supervisor_user as $sup)
+            <option value="{{$sup->user_name}}">{{$sup->user_name}}</option>
+          @endforeach
+          </select>
         </div>
         
       </div>
@@ -68,16 +76,6 @@
         </div>
       </div>
       <br>
-      <br>
-      <div class="row vaing-wrapper">
-        <br>
-        <div class="input-field col s3">
-          <input type="date" name="START" class="form-control" placeholder="Data Inicial" value="{{$START}}">
-        </div>
-        <div class="input-field col s3">
-          <input type="date" name="END" class="form-control" value="{{$END}}">
-        </div>
-      </div>
       <br>
       <br>
       
@@ -99,8 +97,6 @@
     <input type="text" name="nome" value="{{$nome}}">  
     <input type="text" name="cpf" value="{{$cpf}}">  
     <input type="text" name="num_contrato" value="{{$num_contrato}}">
-    <input type="text" name="START" value="{{$START}}">
-    <input type="text" name="END" value="{{$END}}"> 
     </div>      
     <div class="ms-auto">           
     <div class="ms-2"> 

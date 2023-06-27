@@ -17,7 +17,6 @@
 
 
 <section>
-<div class="container">
   <div class="row">
 <div class="col-md-11.5 mx-auto">
 <div class="card mb-10 divback">
