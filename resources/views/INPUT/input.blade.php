@@ -42,6 +42,7 @@
       <div class="row vaing-wrapper">
         <div class="input-field col s1">
         <select name="user_name_id" class="form-control">
+        <option value="">Vendedor</option>
           @foreach($vendedor_user as $ved)
             <option value="{{$ved->user_name}}">{{$ved->user_name}}</option>
           @endforeach
@@ -54,6 +55,7 @@
           @if(auth()->user()->can('search_sup'))
         <div class="input-field col s2">
           <select name="supervisor_id" class="form-control">
+          <option value="">Supervisor</option>
           @foreach($supervisor_user as $sup)
             <option value="{{$sup->user_name}}">{{$sup->user_name}}</option>
           @endforeach
